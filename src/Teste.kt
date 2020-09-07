@@ -8,17 +8,21 @@ fun main() {
 private fun minSumOrderAsc(numbers: IntArray, size: Int) {
     numbers.sort()
     var minSum = 0
-    for (i in 0 until numbers.size - 1) {
-        minSum += numbers[i]
-    }
+    minSum = sum(size, minSum, numbers)
     println(minSum)
 }
 
 private fun maxSumOrderDesc(numbers: IntArray, size: Int) {
     numbers.sortDescending()
     var maxSum = 0
-    for (i in 0 until size) {
-        maxSum += numbers[i]
-    }
+    maxSum = sum(size, maxSum, numbers)
     println(maxSum)
+}
+
+private fun sum(size: Int, sum: Int, numbers: IntArray): Int {
+    var sum = sum
+    for (i in 0 until size) {
+        sum += numbers[i]
+    }
+    return sum
 }
