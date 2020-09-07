@@ -1,44 +1,24 @@
-object Teste {
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val numbers = intArrayOf(2, 8, 4, -3, 7)
-        orderAsc(numbers)
-        orderDesc(numbers)
-    }
+fun main() {
+    val numbers = intArrayOf(2, 8, 4, -3, 7)
+    val size = numbers.size.plus(-1)
+    minSumOrderAsc(numbers, size)
+    maxSumOrderDesc(numbers, size)
+}
 
-    private fun orderAsc(numbers: IntArray) {
-        var aux: Int
-        for (i in numbers.indices) {
-            for (j in i + 1 until numbers.size) {
-                if (numbers[i] > numbers[j]) {
-                    aux = numbers[i]
-                    numbers[i] = numbers[j]
-                    numbers[j] = aux
-                }
-            }
-        }
-        var sumAsc = 0
-        for (i in 0 until numbers.size - 1) {
-            sumAsc += numbers[i]
-        }
-        println(sumAsc)
+private fun minSumOrderAsc(numbers: IntArray, size: Int) {
+    numbers.sort()
+    var minSum = 0
+    for (i in 0 until numbers.size - 1) {
+        minSum += numbers[i]
     }
+    println(minSum)
+}
 
-    private fun orderDesc(numbers: IntArray) {
-        var aux: Int
-        for (i in numbers.indices) {
-            for (j in i + 1 until numbers.size) {
-                if (numbers[i] < numbers[j]) {
-                    aux = numbers[i]
-                    numbers[i] = numbers[j]
-                    numbers[j] = aux
-                }
-            }
-        }
-        var sumDesc = 0
-        for (i in 0 until numbers.size - 1) {
-            sumDesc += numbers[i]
-        }
-        println(sumDesc)
+private fun maxSumOrderDesc(numbers: IntArray, size: Int) {
+    numbers.sortDescending()
+    var maxSum = 0
+    for (i in 0 until size) {
+        maxSum += numbers[i]
     }
+    println(maxSum)
 }
